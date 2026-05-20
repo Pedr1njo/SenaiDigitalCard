@@ -1,4 +1,4 @@
-package com.pdrinyo.thesenaidigitalcard
+package com.pdrinyo.thesenaidigitalcard.App
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -6,14 +6,12 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
@@ -21,8 +19,9 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.pdrinyo.thesenaidigitalcard.ui.theme.InfoAluno
-import com.pdrinyo.thesenaidigitalcard.ui.theme.TheSenaiDigitalCardTheme
+import com.pdrinyo.thesenaidigitalcard.R
+import com.pdrinyo.thesenaidigitalcard.ui.theme.Design.PerfilAluno
+import com.pdrinyo.thesenaidigitalcard.ui.theme.Design.TheSenaiDigitalCardTheme
 
 // ---------------- MAIN ACTIVITY ----------------
 
@@ -60,7 +59,7 @@ fun TheSenaiDigitalCard(modifier: Modifier = Modifier) {
 
     Box(modifier = Modifier.fillMaxSize()) {
 
-        // Background
+        // BACKGROUND
         Image(
             painter = painterResource(id = R.drawable.fundooooq),
             contentDescription = "Fundo",
@@ -68,7 +67,7 @@ fun TheSenaiDigitalCard(modifier: Modifier = Modifier) {
             contentScale = ContentScale.Crop
         )
 
-        // overlay
+        // OVERLAY
         Box(
             modifier = Modifier
                 .fillMaxSize()
@@ -83,7 +82,7 @@ fun TheSenaiDigitalCard(modifier: Modifier = Modifier) {
                 )
         )
 
-        // conteúdo do Meu Codigo
+        // CONTEÚDO
         Column(
             modifier = Modifier
                 .fillMaxSize()
@@ -101,30 +100,16 @@ fun TheSenaiDigitalCard(modifier: Modifier = Modifier) {
                     .shadow(8.dp, CircleShape)
             )
 
-            Spacer(modifier = Modifier.height(40.dp))
+            Spacer(modifier = Modifier.height(30.dp))
 
-            Image(
-                painter = painterResource(id = R.drawable.homelanderr),
-                contentDescription = "Foto aluno",
-                contentScale = ContentScale.Crop,
-                modifier = Modifier
-                    .size(200.dp)
-                    .clip(CircleShape)
-                    .border(
-                        3.dp,
-                        Color(0xFFFFD700).copy(alpha = 0.6f),
-                        CircleShape
-                    )
-                    .shadow(16.dp, CircleShape)
+
+
+
+            PerfilAluno(
+                nome = "Pedrinyo",
+                curso = "System Developer",
+                idFoto = R.drawable.homelanderr
             )
-
-            Spacer(modifier = Modifier.height(24.dp))
-
-            InfoAluno(textLabel = "Nome", textValue = "Pedrinyo")
-
-            Spacer(modifier = Modifier.height(12.dp))
-
-            InfoAluno(textLabel = "Curso", textValue = "System Developer")
 
             Spacer(modifier = Modifier.height(28.dp))
 

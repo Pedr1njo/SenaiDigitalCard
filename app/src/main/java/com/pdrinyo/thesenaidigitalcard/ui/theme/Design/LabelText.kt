@@ -1,6 +1,5 @@
-package com.pdrinyo.thesenaidigitalcard
+package com.pdrinyo.thesenaidigitalcard.ui.theme.Design
 
-import android.R.color.white
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier

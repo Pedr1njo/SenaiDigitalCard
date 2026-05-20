@@ -1,4 +1,4 @@
-package com.pdrinyo.thesenaidigitalcard.ui.theme
+package com.pdrinyo.thesenaidigitalcard.ui.theme.BaseSystem
 
 import androidx.compose.ui.graphics.Color
 
