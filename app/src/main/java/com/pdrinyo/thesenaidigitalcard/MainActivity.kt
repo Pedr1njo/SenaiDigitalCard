@@ -7,19 +7,9 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -29,23 +19,23 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.font.FontFamily
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
-import com.pdrinyo.thesenaidigitalcard.ui.theme.QrCode
+import com.pdrinyo.thesenaidigitalcard.ui.theme.InfoAluno
 import com.pdrinyo.thesenaidigitalcard.ui.theme.TheSenaiDigitalCardTheme
+
+// ---------------- MAIN ACTIVITY ----------------
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+
         setContent {
             TheSenaiDigitalCardTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding -> //Scaffold é o esqueleto do projeto
+                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     TheSenaiDigitalCard(
-                        modifier = Modifier.padding(innerPadding) //
+                        modifier = Modifier.padding(innerPadding)
                     )
                 }
             }
@@ -53,61 +43,69 @@ class MainActivity : ComponentActivity() {
     }
 }
 
+// ---------------- PREVIEW ----------------
 
+@Preview(showBackground = true, showSystemUi = true)
+@Composable
+fun TheSenaiDigitalCardPreview() {
+    TheSenaiDigitalCardTheme {
+        TheSenaiDigitalCard()
+    }
+}
+
+// ---------------- UI ----------------
 
 @Composable
 fun TheSenaiDigitalCard(modifier: Modifier = Modifier) {
 
-    Box {
+    Box(modifier = Modifier.fillMaxSize()) {
 
+        // Background
+        Image(
+            painter = painterResource(id = R.drawable.fundooooq),
+            contentDescription = "Fundo",
+            modifier = Modifier.fillMaxSize(),
+            contentScale = ContentScale.Crop
+        )
+
+        // overlay
         Box(
-            modifier = Modifier.fillMaxSize()
-        ) {
-
-            Image(
-                painter = painterResource(id = R.drawable.fundooooq),
-                contentDescription = "Fundo",
-                modifier = Modifier.fillMaxSize(),
-                contentScale = ContentScale.Crop
-            )
-
-
-            Box(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .background(
-                        Brush.verticalGradient(
-                            colors = listOf(
-                                Color.Black.copy(alpha = 0.4f),
-                                Color.Black.copy(alpha = 0.7f),
-                                Color(0xFF1A1A2E).copy(alpha = 0.9f)
-                            )
+            modifier = Modifier
+                .fillMaxSize()
+                .background(
+                    Brush.verticalGradient(
+                        colors = listOf(
+                            Color.Black.copy(alpha = 0.4f),
+                            Color.Black.copy(alpha = 0.7f),
+                            Color(0xFF1A1A2E).copy(alpha = 0.9f)
                         )
                     )
-            )
-        }
+                )
+        )
 
+        // conteúdo do Meu Codigo
         Column(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(24.dp),
-            horizontalAlignment = Alignment.CenterHorizontally, //centraliza na Horizontal
-            verticalArrangement = Arrangement.Center // Centraliza a Vertical
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Top
         ) {
-            // Adicionei SOMBRA no logo
+
             Image(
                 painter = painterResource(id = R.drawable.senailogo),
-                contentDescription = "Logo",
+                contentDescription = "Logo SENAI",
                 modifier = Modifier
+                    .size(120.dp)
+                    .padding(top = 20.dp)
                     .shadow(8.dp, CircleShape)
             )
 
-            Spacer(modifier = Modifier.height(24.dp))
+            Spacer(modifier = Modifier.height(40.dp))
 
-            // Deixei a borda dourada
             Image(
                 painter = painterResource(id = R.drawable.homelanderr),
-                contentDescription = "Pedrinyo",
+                contentDescription = "Foto aluno",
                 contentScale = ContentScale.Crop,
                 modifier = Modifier
                     .size(200.dp)
@@ -117,66 +115,24 @@ fun TheSenaiDigitalCard(modifier: Modifier = Modifier) {
                         Color(0xFFFFD700).copy(alpha = 0.6f),
                         CircleShape
                     )
-                    .shadow(16.dp, CircleShape, ambientColor = Color(0xFFFFD700))
+                    .shadow(16.dp, CircleShape)
             )
 
             Spacer(modifier = Modifier.height(24.dp))
 
-            Row {
-                Text(
-                    text = "Nome: ",
-                    color = Color.White,
-                    fontSize = 28.sp,
-                    fontWeight = FontWeight.Bold,
-                    fontFamily = FontFamily.SansSerif
-                )
-
-                Text(
-                    text = "Pedrinyo",
-                    color = Color(0xFFFFD700),
-                    fontSize = 28.sp,
-                    fontWeight = FontWeight.Medium,
-                    fontFamily = FontFamily.SansSerif
-                )
-            }
+            InfoAluno(textLabel = "Nome", textValue = "Pedrinyo")
 
             Spacer(modifier = Modifier.height(12.dp))
 
-            Row {
-                Text(
-                    text = "Curso: ",
-                    fontSize = 24.sp,
-                    color = Color.White,
-                    fontWeight = FontWeight.Bold,
-                    fontFamily = FontFamily.SansSerif
-                )
-
-                Text(
-                    text = "DS",
-                    fontSize = 24.sp,
-                    color = Color(0xFFFFD700),
-                    fontWeight = FontWeight.Medium,
-                    fontFamily = FontFamily.SansSerif
-                )
-            }
+            InfoAluno(textLabel = "Curso", textValue = "System Developer")
 
             Spacer(modifier = Modifier.height(28.dp))
 
-            // Deixei o QR code com sombra
-
-            QrCode(
-                conteudo = ""
+            Image(
+                painter = painterResource(id = R.drawable.qrcodeee),
+                contentDescription = "QR Code",
+                modifier = Modifier.size(180.dp)
             )
         }
     }
 }
-
-@Preview(
-    showBackground = true,
-    showSystemUi = true
-)
-@Composable
-fun TheSenaiDigitalCardPreview(){
-    TheSenaiDigitalCard()
-}
-
