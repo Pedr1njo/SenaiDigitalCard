@@ -1,4 +1,4 @@
-package com.pdrinyo.thesenaidigitalcard.ui.theme.Design
+package com.pdrinyo.thesenaidigitalcard.feature.carteirinha.BaseSystem.Design
 
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable

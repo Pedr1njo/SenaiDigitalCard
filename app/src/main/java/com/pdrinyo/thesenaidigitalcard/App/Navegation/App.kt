@@ -2,7 +2,7 @@ package com.pdrinyo.thesenaidigitalcard.App.Navegation
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.compose.rememberNavController
-import com.pdrinyo.thesenaidigitalcard.ui.theme.Design.TheSenaiDigitalCardTheme
+import com.pdrinyo.thesenaidigitalcard.feature.carteirinha.BaseSystem.Design.TheSenaiDigitalCardTheme
 
 @Composable
 fun App() {

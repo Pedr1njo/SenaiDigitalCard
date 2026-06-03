@@ -1,11 +1,11 @@
-package com.pdrinyo.thesenaidigitalcard.ui.theme.Design
+package com.pdrinyo.thesenaidigitalcard.feature.carteirinha.BaseSystem.Design
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.unit.dp
-import com.pdrinyo.thesenaidigitalcard.ui.theme.BaseSystem.ValueText
+import com.pdrinyo.thesenaidigitalcard.feature.carteirinha.BaseSystem.ValueText
 
 @Composable
 fun InfoAluno(textLabel: String, textValue: String) {

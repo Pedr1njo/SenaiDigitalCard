@@ -20,8 +20,8 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.pdrinyo.thesenaidigitalcard.R
-import com.pdrinyo.thesenaidigitalcard.ui.theme.Design.PerfilAluno
-import com.pdrinyo.thesenaidigitalcard.ui.theme.Design.TheSenaiDigitalCardTheme
+import com.pdrinyo.thesenaidigitalcard.feature.carteirinha.BaseSystem.Design.PerfilAluno
+import com.pdrinyo.thesenaidigitalcard.feature.carteirinha.BaseSystem.Design.TheSenaiDigitalCardTheme
 
 // ---------------- MAIN ACTIVITY ----------------
 

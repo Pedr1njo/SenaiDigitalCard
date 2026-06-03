@@ -1,4 +1,4 @@
-package com.pdrinyo.thesenaidigitalcard.ui.theme.Design
+package com.pdrinyo.thesenaidigitalcard.feature.carteirinha.BaseSystem.Design
 
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
@@ -9,13 +9,13 @@ import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
-import com.pdrinyo.thesenaidigitalcard.ui.theme.BaseSystem.Pink40
-import com.pdrinyo.thesenaidigitalcard.ui.theme.BaseSystem.Pink80
-import com.pdrinyo.thesenaidigitalcard.ui.theme.BaseSystem.Purple40
-import com.pdrinyo.thesenaidigitalcard.ui.theme.BaseSystem.Purple80
-import com.pdrinyo.thesenaidigitalcard.ui.theme.BaseSystem.PurpleGrey40
-import com.pdrinyo.thesenaidigitalcard.ui.theme.BaseSystem.PurpleGrey80
-import com.pdrinyo.thesenaidigitalcard.ui.theme.BaseSystem.Typography
+import com.pdrinyo.thesenaidigitalcard.feature.carteirinha.BaseSystem.Pink40
+import com.pdrinyo.thesenaidigitalcard.feature.carteirinha.BaseSystem.Pink80
+import com.pdrinyo.thesenaidigitalcard.feature.carteirinha.BaseSystem.Purple40
+import com.pdrinyo.thesenaidigitalcard.feature.carteirinha.BaseSystem.Purple80
+import com.pdrinyo.thesenaidigitalcard.feature.carteirinha.BaseSystem.PurpleGrey40
+import com.pdrinyo.thesenaidigitalcard.feature.carteirinha.BaseSystem.PurpleGrey80
+import com.pdrinyo.thesenaidigitalcard.feature.carteirinha.BaseSystem.Typography
 
 private val DarkColorScheme = darkColorScheme(
     primary = Purple80,
