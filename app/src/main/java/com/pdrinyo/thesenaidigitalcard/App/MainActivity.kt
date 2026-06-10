@@ -19,6 +19,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.pdrinyo.thesenaidigitalcard.App.Navegation.App
 import com.pdrinyo.thesenaidigitalcard.R
 import com.pdrinyo.thesenaidigitalcard.feature.carteirinha.BaseSystem.Design.PerfilAluno
 import com.pdrinyo.thesenaidigitalcard.feature.carteirinha.BaseSystem.Design.TheSenaiDigitalCardTheme
@@ -31,13 +32,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
 
         setContent {
-            TheSenaiDigitalCardTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    TheSenaiDigitalCard(
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
-            }
+            App()
         }
     }
 }

@@ -24,6 +24,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.pdrinyo.thesenaidigitalcard.App.Navegation.Routes
 
 
 @Composable
@@ -86,22 +87,24 @@ fun LoginScreen(modifier: Modifier = Modifier
             }
 
         )
-
         Button(
-            onClick = {},
-            shape = RoundedCornerShape(size=4.dp),
+            onClick = {
+                navController.navigate(Routes.Home.route)
+            },
+            shape = RoundedCornerShape(size = 4.dp),
             border = BorderStroke(
                 width = 1.dp,
                 color = MaterialTheme.colorScheme.primary
             )
-        ) { Text(
-            text = "Entrar",
-            fontSize = 14.sp,
-            fontWeight = FontWeight.ExtraBold,
-            fontFamily = FontFamily.Serif
-        )
-
+        ) {
+            Text(
+                text = "Entrar",
+                fontSize = 14.sp,
+                fontWeight = FontWeight.ExtraBold,
+                fontFamily = FontFamily.Serif
+            )
         }
+
 
     }
 }

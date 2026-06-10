@@ -35,58 +35,64 @@ fun UnidadeCurricularCard (
             containerColor = MaterialTheme.colorScheme.surface
         ),
         elevation = CardDefaults.cardElevation(defaultElevation = 3.dp)
-    ) { }
-    Column(
-        modifier = Modifier.padding(16.dp),
-        verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
 
-        Text(
-            text = "Unidade Curricular",
-            fontSize = 20.sp,
-            fontWeight = FontWeight.Bold
-        )
-
-        Spacer(modifier = Modifier.height(8.dp))
-
-        Text(
-            text = "Professor: ${unidadeCurricular.professor}"
-
-        )
-
-        Spacer(modifier = Modifier.height(12.dp))
-
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.SpaceBetween
+        Column(
+            modifier = Modifier.padding(16.dp),
+            verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
 
             Text(
-                text = "N1: ${unidadeCurricular.nota1}"
+                text = "Unidade Curricular",
+                fontSize = 20.sp,
+                fontWeight = FontWeight.Bold
+            )
+
+            Spacer(modifier = Modifier.height(8.dp))
+
+            Text(
+                text = "Professor: ${unidadeCurricular.professor}"
 
             )
 
+            Spacer(modifier = Modifier.height(12.dp))
+
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween
+            ) {
+
+                Text(
+                    text = "N1: ${unidadeCurricular.nota1}"
+
+                )
+
+                Text(
+                    text = "N2: ${unidadeCurricular.nota2}"
+
+
+                )
+
+                Text(
+                    text = "Média: ${unidadeCurricular.media}"
+
+                )
+            }
+
+            Spacer(modifier = Modifier.height(12.dp))
+
             Text(
-                text = "N2: ${unidadeCurricular.nota2}"
-
-
-            )
-
-            Text(
-                text = "Média: ${unidadeCurricular.media}"
-
+                text = "Faltas: 2",
+                fontSize = 16.sp,
+                color = MaterialTheme.colorScheme.primary
             )
         }
 
-        Spacer(modifier = Modifier.height(12.dp))
 
-        Text(
-            text = "Faltas: 2",
-            fontSize = 16.sp,
-            color = MaterialTheme.colorScheme.primary
-        )
     }
-}
+    }
+
+
 @Preview(
     showBackground = true
 )

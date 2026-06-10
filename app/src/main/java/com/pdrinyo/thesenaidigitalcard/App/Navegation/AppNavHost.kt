@@ -8,7 +8,12 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.pdrinyo.thesenaidigitalcard.App.TheSenaiDigitalCard
 import com.pdrinyo.thesenaidigitalcard.feature.login.LoginScreen
+import com.pdrinyo.thesenaidigitalcard.feature.home.HomeScreen
+import com.pdrinyo.thesenaidigitalcard.feature.unidadecurricular.presentation.UnidadeCurricularScreen
+import com.pdrinyo.thesenaidigitalcard.feature.unidadecurricular.presentation.component.UnidadeCurricularCard
+import com.pdrinyo.thesenaidigitalcard.feature.unidadecurricular.presentation.domain.model.UnidadeCurricular
 
 @Composable
 fun AppNavHost(
@@ -26,15 +31,25 @@ fun AppNavHost(
             )
         }
 
+        composable(Routes.Home.route) {
+            HomeScreen(
+                navController = navController
+            )
+        }
+
         composable(Routes.Carteirinha.route) {
             Scaffold(
                 modifier = Modifier.fillMaxSize()
             ) { innerPadding ->
 
-                LoginScreen(
+                TheSenaiDigitalCard(
                     modifier = Modifier.padding(innerPadding)
                 )
             }
         }
+
+        composable(Routes.UnidadeCurricular.route) {
+            UnidadeCurricularScreen()
+        }
+        }
     }
-}
