@@ -11,9 +11,10 @@ import androidx.navigation.compose.composable
 import com.pdrinyo.thesenaidigitalcard.App.TheSenaiDigitalCard
 import com.pdrinyo.thesenaidigitalcard.feature.login.LoginScreen
 import com.pdrinyo.thesenaidigitalcard.feature.home.HomeScreen
-import com.pdrinyo.thesenaidigitalcard.feature.unidadecurricular.presentation.UnidadeCurricularScreen
+
 import com.pdrinyo.thesenaidigitalcard.feature.unidadecurricular.presentation.component.UnidadeCurricularCard
 import com.pdrinyo.thesenaidigitalcard.feature.unidadecurricular.presentation.domain.model.UnidadeCurricular
+import com.pdrinyo.thesenaidigitalcard.feature.unidadecurricular.presentation.screen.UnidadeCurricularScreen
 
 @Composable
 fun AppNavHost(
