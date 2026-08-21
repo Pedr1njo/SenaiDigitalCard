@@ -93,6 +93,7 @@ fun HomeScreen(
 
             Spacer(modifier = Modifier.height(40.dp))
 
+            // Botão Carteirinha
             HomeOptionButton(
                 title = "Carteirinha",
                 onClick = {
@@ -100,17 +101,17 @@ fun HomeScreen(
                 }
             )
 
-            Spacer(modifier = Modifier.height(16.dp))
-
+            // Botão UCs
             HomeOptionButton(
-                title = "Unidades Curriculares",
+                title = "UCs",
                 onClick = {
-                    navController.navigate(Routes.UnidadeCurricular.route)
+                    navController.navigate(Routes.UnidadeCurricularAluno.route)
                 }
             )
         }
+        }
     }
-}
+
 
 @Composable
 fun HomeOptionButton(

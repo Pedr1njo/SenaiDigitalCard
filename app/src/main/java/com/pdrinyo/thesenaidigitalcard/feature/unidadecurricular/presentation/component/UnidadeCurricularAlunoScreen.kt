@@ -1,4 +1,4 @@
-package com.pdrinyo.thesenaidigitalcard.feature.turma.presentation
+package com.pdrinyo.thesenaidigitalcard.feature.unidadecurricular.presentation.screen
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -29,18 +29,13 @@ import androidx.compose.ui.unit.sp
 import com.pdrinyo.thesenaidigitalcard.feature.login.BackgroundBlue
 import com.pdrinyo.thesenaidigitalcard.feature.login.DarkTextBlue
 import com.pdrinyo.thesenaidigitalcard.feature.login.LightTextBlue
-import com.pdrinyo.thesenaidigitalcard.feature.turma.domain.model.Turma
-import com.pdrinyo.thesenaidigitalcard.feature.turma.presentation.component.TurmaCard
+import com.pdrinyo.thesenaidigitalcard.feature.unidadecurricular.presentation.component.UnidadeCurricularAlunoCard
+import com.pdrinyo.thesenaidigitalcard.feature.unidadecurricular.presentation.data.dataSource
 
 @Composable
-fun TurmasScreen(
-    turmas: List<Turma> = listOf(
-        Turma("1", "Turma 1A", "Desenvolvimento de Sistemas", 32, "13:30 - 17:30", "1º Semestre"),
-        Turma("2", "Turma 2B", "Análise de Sistemas", 28, "08:00 - 12:00", "2º Semestre"),
-        Turma("3", "Turma 3C", "Redes de Computadores", 25, "19:00 - 22:30", "1º Semestre"),
-        Turma("4", "Turma 4A", "Banco de Dados", 30, "13:30 - 17:30", "3º Semestre")
-    )
-) {
+fun UnidadeCurricularAlunoScreen() {
+    val listaMaterias = dataSource()
+
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -55,8 +50,8 @@ fun TurmasScreen(
 
             Text(
                 text = buildAnnotatedString {
-                    withStyle(style = SpanStyle(color = DarkTextBlue)) { append("Tur") }
-                    withStyle(style = SpanStyle(color = LightTextBlue)) { append("mas") }
+                    withStyle(style = SpanStyle(color = DarkTextBlue)) { append("U") }
+                    withStyle(style = SpanStyle(color = LightTextBlue)) { append("Cs") }
                 },
                 fontSize = 36.sp,
                 fontWeight = FontWeight.Bold,
@@ -78,8 +73,8 @@ fun TurmasScreen(
                     verticalArrangement = Arrangement.spacedBy(10.dp),
                     contentPadding = PaddingValues(vertical = 4.dp)
                 ) {
-                    items(turmas) { turma ->
-                        TurmaCard(turma = turma)
+                    items(listaMaterias) { item ->
+                        UnidadeCurricularAlunoCard(item = item)
                     }
                 }
             }

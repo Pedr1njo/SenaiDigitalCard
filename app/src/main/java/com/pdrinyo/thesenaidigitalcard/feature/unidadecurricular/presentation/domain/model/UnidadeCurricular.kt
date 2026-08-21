@@ -1,11 +1,10 @@
-package com.pdrinyo.thesenaidigitalcard.feature.unidadecurricular.presentation.domain.model
+package com.pdrinyo.thesenaidigitalcard.feature.unidadecurricular.domain.model
 
-data class UnidadeCurricular (
+data class UnidadeCurricular(
     val id: String,
     val nome: String,
-    val professor: String,
-    val nota1: Double,
-    val nota2: Double,
-    val  media: Double,
-    val faltas: Int
+    val turma: String,
+    val cargaHoraria: String,
+    val totalAulas: Int,
+    val diasSemana: String
 )

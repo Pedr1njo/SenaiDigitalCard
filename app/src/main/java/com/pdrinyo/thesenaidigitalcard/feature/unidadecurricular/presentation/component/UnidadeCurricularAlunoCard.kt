@@ -1,7 +1,6 @@
 package com.pdrinyo.thesenaidigitalcard.feature.unidadecurricular.presentation.component
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -15,7 +14,6 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
@@ -30,19 +28,17 @@ import androidx.compose.ui.unit.sp
 import com.pdrinyo.thesenaidigitalcard.feature.login.DarkTextBlue
 import com.pdrinyo.thesenaidigitalcard.feature.login.IconContainerBlue
 import com.pdrinyo.thesenaidigitalcard.feature.login.InputBackground
-import com.pdrinyo.thesenaidigitalcard.feature.unidadecurricular.domain.model.UnidadeCurricular
+import com.pdrinyo.thesenaidigitalcard.feature.unidadecurricular.domain.model.UnidadeCurricularAluno
 
 @Composable
-fun UnidadeCurricularCard(
+fun UnidadeCurricularAlunoCard(
     modifier: Modifier = Modifier,
-    uc: UnidadeCurricular,
-    onClick: () -> Unit = {}
+    item: UnidadeCurricularAluno
 ) {
     Card(
         modifier = modifier
             .fillMaxWidth()
-            .height(110.dp)
-            .clickable { onClick() },
+            .height(95.dp),
         shape = RoundedCornerShape(16.dp),
         colors = CardDefaults.cardColors(containerColor = InputBackground),
         border = androidx.compose.foundation.BorderStroke(1.dp, Color.White),
@@ -56,7 +52,7 @@ fun UnidadeCurricularCard(
         ) {
             Box(
                 modifier = Modifier
-                    .size(48.dp)
+                    .size(44.dp)
                     .background(IconContainerBlue, shape = RoundedCornerShape(12.dp)),
                 contentAlignment = Alignment.Center
             ) {
@@ -70,27 +66,32 @@ fun UnidadeCurricularCard(
                 verticalArrangement = Arrangement.Center
             ) {
                 Text(
-                    text = uc.nome,
+                    text = item.materia,
                     fontSize = 15.sp,
                     fontWeight = FontWeight.Bold,
                     color = DarkTextBlue
                 )
-                Text(
-                    text = "Turma: ${uc.turma}",
-                    fontSize = 12.sp,
-                    color = Color.DarkGray
-                )
-                Text(
-                    text = "Carga Horária: ${uc.cargaHoraria} (${uc.totalAulas} Aulas)",
-                    fontSize = 11.sp,
-                    color = Color.Gray
-                )
-                Text(
-                    text = "Dias: ${uc.diasSemana}",
-                    fontSize = 11.sp,
-                    fontWeight = FontWeight.Medium,
-                    color = DarkTextBlue
-                )
+                Spacer(modifier = Modifier.height(4.dp))
+                Row(
+                    horizontalArrangement = Arrangement.spacedBy(12.dp)
+                ) {
+                    Text(
+                        text = "Nota: ${item.nota}",
+                        fontSize = 12.sp,
+                        fontWeight = FontWeight.SemiBold,
+                        color = if (item.nota >= item.media) Color(0xFF2E7D32) else Color(0xFFC62828)
+                    )
+                    Text(
+                        text = "Média: ${item.media}",
+                        fontSize = 12.sp,
+                        color = Color.DarkGray
+                    )
+                    Text(
+                        text = "Faltas: ${item.faltas}",
+                        fontSize = 12.sp,
+                        color = Color.Gray
+                    )
+                }
             }
         }
     }

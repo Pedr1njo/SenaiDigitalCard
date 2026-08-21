@@ -1,16 +1,16 @@
 package com.pdrinyo.thesenaidigitalcard.feature.unidadecurricular.presentation.data
 
-import com.pdrinyo.thesenaidigitalcard.feature.unidadecurricular.presentation.domain.model.UnidadeCurricular
+import com.pdrinyo.thesenaidigitalcard.feature.unidadecurricular.domain.model.UnidadeCurricularAluno
 
-fun dataSource (): List<UnidadeCurricular> {
+fun dataSource(): List<UnidadeCurricularAluno> {
     return listOf(
-        UnidadeCurricular(id = "1",nome = "Matemática",professor = "Dr. Silva",nota1 = 8.5,nota2 = 7.0,media = 7.75,faltas = 2),
-        UnidadeCurricular(id = "2",nome = "Portugues",professor = "Dr. Silva",nota1 = 8.5,nota2 = 7.0,media = 7.75,faltas = 2),
-        UnidadeCurricular(id = "3",nome = "Banco de Dados",professor = "Dr. Silva",nota1 = 8.5,nota2 = 7.0,media = 7.75,faltas = 2),
-        UnidadeCurricular(id = "4",nome = "Ciências",professor = "Dr. Silva",nota1 = 8.5,nota2 = 7.0,media = 7.75,faltas = 2),
-        UnidadeCurricular(id = "5",nome = "Fisica",professor = "Dr. Silva",nota1 = 8.5,nota2 = 7.0,media = 7.75,faltas = 2),
-        UnidadeCurricular(id = "6",nome = "Biologia",professor = "Dr. Silva",nota1 = 8.5,nota2 = 7.0,media = 7.75,faltas = 2),
-        UnidadeCurricular(id = "7",nome = "Matemática 2",professor = "Dr. Silva",nota1 = 8.5,nota2 = 7.0,media = 7.75,faltas = 2),
-        UnidadeCurricular(id = "8",nome = "Matemática 3",professor = "Dr. Silva",nota1 = 8.5,nota2 = 7.0,media = 7.75,faltas = 2),
+        UnidadeCurricularAluno(id = "1", materia = "Matemática", nota = 8.5, media = 7.75, faltas = 2),
+        UnidadeCurricularAluno(id = "2", materia = "Português", nota = 8.5, media = 7.75, faltas = 2),
+        UnidadeCurricularAluno(id = "3", materia = "Banco de Dados", nota = 8.5, media = 7.75, faltas = 2),
+        UnidadeCurricularAluno(id = "4", materia = "Ciências", nota = 8.5, media = 7.75, faltas = 2),
+        UnidadeCurricularAluno(id = "5", materia = "Física", nota = 8.5, media = 7.75, faltas = 2),
+        UnidadeCurricularAluno(id = "6", materia = "Biologia", nota = 8.5, media = 7.75, faltas = 2),
+        UnidadeCurricularAluno(id = "7", materia = "Matemática 2", nota = 8.5, media = 7.75, faltas = 2),
+        UnidadeCurricularAluno(id = "8", materia = "Matemática 3", nota = 8.5, media = 7.75, faltas = 2)
     )
 }
