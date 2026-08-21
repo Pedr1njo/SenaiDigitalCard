@@ -1,5 +1,4 @@
-package com.pdrinyo.thesenaidigitalcard.feature.unidadecurricular.presentation.screen
-
+package com.pdrinyo.thesenaidigitalcard.feature.unidadecurricular.presentation.component
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
@@ -16,8 +15,6 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateListOf
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -32,28 +29,24 @@ import androidx.compose.ui.unit.sp
 import com.pdrinyo.thesenaidigitalcard.feature.login.BackgroundBlue
 import com.pdrinyo.thesenaidigitalcard.feature.login.DarkTextBlue
 import com.pdrinyo.thesenaidigitalcard.feature.login.LightTextBlue
-import com.pdrinyo.thesenaidigitalcard.feature.unidadecurricular.domain.model.Aluno
-import com.pdrinyo.thesenaidigitalcard.feature.unidadecurricular.presentation.component.AlunoFaltaCard
+import com.pdrinyo.thesenaidigitalcard.feature.turma.domain.model.Turma
+import com.pdrinyo.thesenaidigitalcard.feature.turma.presentation.component.TurmaCard
 
 @Composable
-fun UnidadeCurricularScreen(
-    modifier: Modifier = Modifier
+fun TurmasScreen(
+    turmas: List<Turma> = listOf(
+        Turma("1", "Turma 1 – Desenvolvimento de Sistemas"),
+        Turma("2", "Turma 2 – Análise e Desenvolvimento de Sistemas"),
+        Turma("3", "Turma 3 – Redes de Computadores"),
+        Turma("4", "Turma 4 – Banco de Dados"),
+        Turma("5", "Turma 5 – Programação de Aplicativos"),
+        Turma("6", "Turma 6 – Segurança da Informação"),
+        Turma("7", "Turma 7 – Engenharia de Software"),
+        Turma("8", "Turma 8 – Internet das Coisas (IoT)")
+    )
 ) {
-    val alunosList = remember {
-        mutableStateListOf(
-            Aluno("1", "Ana Silva", 0),
-            Aluno("2", "Bruno Santos", 1),
-            Aluno("3", "Carlos Eduardo", 0),
-            Aluno("4", "Daniela Rocha", 2),
-            Aluno("5", "Gabriel Lima", 0),
-            Aluno("6", "Isabela Costa", 3),
-            Aluno("7", "Lucas Martins", 1),
-            Aluno("8", "Mariana Alves", 0)
-        )
-    }
-
     Box(
-        modifier = modifier
+        modifier = Modifier
             .fillMaxSize()
             .background(BackgroundBlue)
             .padding(horizontal = 20.dp, vertical = 24.dp)
@@ -67,10 +60,10 @@ fun UnidadeCurricularScreen(
             Text(
                 text = buildAnnotatedString {
                     withStyle(style = SpanStyle(color = DarkTextBlue)) {
-                        append("U")
+                        append("Tur")
                     }
                     withStyle(style = SpanStyle(color = LightTextBlue)) {
-                        append("Cs")
+                        append("mas")
                     }
                 },
                 fontSize = 36.sp,
@@ -93,16 +86,8 @@ fun UnidadeCurricularScreen(
                     verticalArrangement = Arrangement.spacedBy(10.dp),
                     contentPadding = PaddingValues(vertical = 4.dp)
                 ) {
-                    items(alunosList, key = { it.id }) { aluno ->
-                        AlunoFaltaCard(
-                            aluno = aluno,
-                            onAddFalta = {
-                                val index = alunosList.indexOf(aluno)
-                                if (index != -1) {
-                                    alunosList[index] = aluno.copy(faltas = aluno.faltas + 1)
-                                }
-                            }
-                        )
+                    items(turmas) { turma ->
+                        TurmaCard(turma = turma)
                     }
                 }
             }
@@ -112,6 +97,6 @@ fun UnidadeCurricularScreen(
 
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
-fun UnidadeCurricularScreenPreview() {
-    UnidadeCurricularScreen()
+fun TurmasScreenPreview() {
+    TurmasScreen()
 }

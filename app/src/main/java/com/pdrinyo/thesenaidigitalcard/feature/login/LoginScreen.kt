@@ -66,7 +66,7 @@ fun LoginScreen(
         ) {
             Spacer(modifier = Modifier.height(60.dp))
 
-            // Título: "Seja Bem vindo!"
+
             Text(
                 text = buildAnnotatedString {
                     withStyle(style = SpanStyle(color = DarkTextBlue)) {
@@ -83,7 +83,7 @@ fun LoginScreen(
 
             Spacer(modifier = Modifier.height(48.dp))
 
-            // Campo de Login (E-mail)
+
             OutlinedTextField(
                 value = email,
                 onValueChange = { email = it },
@@ -150,11 +150,15 @@ fun LoginScreen(
             Spacer(modifier = Modifier.height(24.dp))
 
             // Botão Entrar com Validação
+            // Botão Entrar com Validação de Aluno e Professor
             Button(
                 onClick = {
-                    if (email == "ph" && senha == "1234") {
+                    if (email == "Ph" && senha == "1234") {
                         errorMessage = ""
-                        navController.navigate(Routes.Home.route)
+                        navController.navigate(Routes.HomeAluno.route)
+                    } else if (email == "Pi8" && senha == "Ph2701") {
+                        errorMessage = ""
+                        navController.navigate(Routes.HomeProfessor.route)
                     } else {
                         errorMessage = "E-mail ou senha incorretos!"
                     }
@@ -168,7 +172,6 @@ fun LoginScreen(
                     fontWeight = FontWeight.Bold
                 )
             }
-
 
             if (errorMessage.isNotEmpty()) {
                 Spacer(modifier = Modifier.height(8.dp))
