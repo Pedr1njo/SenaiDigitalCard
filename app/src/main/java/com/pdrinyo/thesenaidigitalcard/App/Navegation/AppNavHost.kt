@@ -4,6 +4,8 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.pdrinyo.thesenaidigitalcard.App.MainActivity
+import com.pdrinyo.thesenaidigitalcard.App.TheSenaiDigitalCard
 import com.pdrinyo.thesenaidigitalcard.feature.home.HomeProfessorScreen
 import com.pdrinyo.thesenaidigitalcard.feature.home.HomeScreen
 import com.pdrinyo.thesenaidigitalcard.feature.login.LoginScreen
@@ -31,7 +33,7 @@ fun AppNavHost(navController: NavHostController) {
 
         // CARTEIRINHA
         composable(Routes.Carteirinha.route) {
-            CarteirinhaScreen(navController = navController)
+            TheSenaiDigitalCard()
         }
 
         // UCS DO ALUNO

@@ -21,6 +21,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -41,12 +42,16 @@ import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.pdrinyo.thesenaidigitalcard.App.Navegation.Routes
+import com.pdrinyo.thesenaidigitalcard.feature.unidadecurricular.presentation.LoginUIEvent
+import com.pdrinyo.thesenaidigitalcard.feature.unidadecurricular.presentation.LoginViewModel
 
 @Composable
 fun LoginScreen(
     modifier: Modifier = Modifier,
+    viewModel: LoginViewModel = viewModel(),
     navController: NavController = NavController(context = LocalContext.current)
 ) {
     // Variáveis de Estado
@@ -85,9 +90,10 @@ fun LoginScreen(
 
 
             OutlinedTextField(
-                value = email,
-                onValueChange = { email = it },
-                placeholder = { Text("Login", color = Color.Gray) },
+                value = uiStat.usuario,
+                onValueChange = { value->
+                    viewModel.onEvent(LoginUIEvent.OnUsuarioChange(value))
+                },
                 singleLine = true,
                 leadingIcon = {
                     Box(
@@ -112,6 +118,7 @@ fun LoginScreen(
                 shape = RoundedCornerShape(16.dp),
                 modifier = Modifier.fillMaxWidth()
             )
+
 
             Spacer(modifier = Modifier.height(16.dp))
 
@@ -153,15 +160,7 @@ fun LoginScreen(
             // Botão Entrar com Validação de Aluno e Professor
             Button(
                 onClick = {
-                    if (email == "Ph" && senha == "1234") {
-                        errorMessage = ""
-                        navController.navigate(Routes.HomeAluno.route)
-                    } else if (email == "Pi8" && senha == "Ph2701") {
-                        errorMessage = ""
-                        navController.navigate(Routes.HomeProfessor.route)
-                    } else {
-                        errorMessage = "E-mail ou senha incorretos!"
-                    }
+                    viewModel.onEvent(LoginUIEvent.OnEntrarClick)
                 },
                 shape = RoundedCornerShape(8.dp),
                 modifier = Modifier.fillMaxWidth()
