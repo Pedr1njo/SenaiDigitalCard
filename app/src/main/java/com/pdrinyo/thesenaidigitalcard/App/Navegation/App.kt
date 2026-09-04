@@ -1,15 +1,18 @@
 package com.pdrinyo.thesenaidigitalcard.App.Navegation
 
 import androidx.compose.runtime.Composable
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.rememberNavController
 import com.pdrinyo.thesenaidigitalcard.feature.carteirinha.BaseSystem.Design.TheSenaiDigitalCardTheme
 
+
 @Composable
 fun App() {
-    TheSenaiDigitalCardTheme() {
+    TheSenaiDigitalCardTheme {
         val navController = rememberNavController()
         AppNavHost(
-            navController = navController
+            navController = navController,
+            sessionViewModel = viewModel()
         )
     }
 }

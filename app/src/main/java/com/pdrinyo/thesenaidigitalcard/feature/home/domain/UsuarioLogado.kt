@@ -5,5 +5,6 @@ data        class UsuarioLogado (
     val nome: String,
     val curso: String,
     val turma: String,
-    val token: String
+    val token: String,
+    val tipo: String
 )

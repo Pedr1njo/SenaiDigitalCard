@@ -1,5 +1,6 @@
 package com.pdrinyo.thesenaidigitalcard.feature.login
 
+import android.util.Log
 import com.pdrinyo.thesenaidigitalcard.R
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -17,12 +18,13 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material3.Button
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -30,7 +32,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
@@ -38,13 +39,15 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
-import com.pdrinyo.thesenaidigitalcard.App.Navegation.Routes
+import com.pdrinyo.thesenaidigitalcard.feature.home.domain.UsuarioLogado
 import com.pdrinyo.thesenaidigitalcard.feature.unidadecurricular.presentation.LoginUIEvent
 import com.pdrinyo.thesenaidigitalcard.feature.unidadecurricular.presentation.LoginViewModel
 
@@ -52,13 +55,22 @@ import com.pdrinyo.thesenaidigitalcard.feature.unidadecurricular.presentation.Lo
 fun LoginScreen(
     modifier: Modifier = Modifier,
     viewModel: LoginViewModel = viewModel(),
-    navController: NavController = NavController(context = LocalContext.current)
+    navController: NavController? = null,
+    onLoginSucesso: (UsuarioLogado) -> Unit = {}
 ) {
     // Variáveis de Estado
     var email by remember { mutableStateOf("") }
     var senha by remember { mutableStateOf("") }
-    var errorMessage by remember { mutableStateOf("") } // Declarando a variável de erro
+    var errorMessage by remember { mutableStateOf("") }
 
+    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+
+    LaunchedEffect(key1 = uiState.usuarioLogado) {
+        uiState.usuarioLogado?.let { usuario ->
+            viewModel.onEvent(LoginUIEvent.OnNavegacaoRealizada)
+            onLoginSucesso(usuario)
+        }
+    }
     Box(
         modifier = modifier
             .fillMaxSize()
@@ -70,7 +82,6 @@ fun LoginScreen(
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Spacer(modifier = Modifier.height(60.dp))
-
 
             Text(
                 text = buildAnnotatedString {
@@ -88,10 +99,9 @@ fun LoginScreen(
 
             Spacer(modifier = Modifier.height(48.dp))
 
-
             OutlinedTextField(
-                value = uiStat.usuario,
-                onValueChange = { value->
+                value = uiState.usuario,
+                onValueChange = { value ->
                     viewModel.onEvent(LoginUIEvent.OnUsuarioChange(value))
                 },
                 singleLine = true,
@@ -119,13 +129,14 @@ fun LoginScreen(
                 modifier = Modifier.fillMaxWidth()
             )
 
-
             Spacer(modifier = Modifier.height(16.dp))
 
-            // Campo da Senha
+
             OutlinedTextField(
-                value = senha,
-                onValueChange = { senha = it },
+                value = uiState.senha,
+                onValueChange = { value ->
+                    viewModel.onEvent(LoginUIEvent.OnSenhaChange(value)) // Envia a digitação para o ViewModel
+                },
                 placeholder = { Text("Senha", color = Color.Gray) },
                 singleLine = true,
                 visualTransformation = PasswordVisualTransformation(),
@@ -156,35 +167,47 @@ fun LoginScreen(
 
             Spacer(modifier = Modifier.height(24.dp))
 
-            // Botão Entrar com Validação
-            // Botão Entrar com Validação de Aluno e Professor
+
             Button(
                 onClick = {
                     viewModel.onEvent(LoginUIEvent.OnEntrarClick)
                 },
+                enabled = !uiState.isLoading,
                 shape = RoundedCornerShape(8.dp),
                 modifier = Modifier.fillMaxWidth()
             ) {
-                Text(
-                    text = "Entrar",
-                    fontSize = 16.sp,
-                    fontWeight = FontWeight.Bold
-                )
+                if (uiState.isLoading) {
+                    CircularProgressIndicator(
+                        modifier = Modifier.size(24.dp),
+                        color = Color.White,
+                        strokeWidth = 2.5.dp
+                    )
+                } else {
+                    Text(
+                        text = "Entrar",
+                        fontSize = 16.sp,
+                        fontWeight = FontWeight.Bold
+                    )
+                }
             }
 
-            if (errorMessage.isNotEmpty()) {
-                Spacer(modifier = Modifier.height(8.dp))
+
+            val mensagemErroExibicao = uiState.erroMensage ?: errorMessage
+            if (!mensagemErroExibicao.isNullOrEmpty()) {
+                Spacer(modifier = Modifier.height(12.dp))
                 Text(
-                    text = errorMessage,
+                    text = mensagemErroExibicao,
                     color = Color.Red,
                     fontSize = 14.sp,
-                    fontWeight = FontWeight.Bold
+                    fontWeight = FontWeight.Bold,
+                    textAlign = TextAlign.Center,
+                    modifier = Modifier.fillMaxWidth()
                 )
             }
 
             Spacer(modifier = Modifier.weight(1f))
 
-            // Logo do TSDG
+
             Image(
                 painter = painterResource(id = R.drawable.tsdglogo),
                 contentDescription = "Logo",

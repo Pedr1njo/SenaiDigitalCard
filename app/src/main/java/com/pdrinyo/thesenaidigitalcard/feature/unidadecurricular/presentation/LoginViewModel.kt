@@ -14,14 +14,11 @@ class LoginViewModel(
     private val repository: LoginRepository = FakeLoginRepositoryImpl()
 ) : ViewModel() {
 
-
     private val _uiState = MutableStateFlow(LoginUIState())
-
     val uiState: StateFlow<LoginUIState> = _uiState.asStateFlow()
 
     fun onEvent(event: LoginUIEvent) {
         when (event) {
-
             is LoginUIEvent.OnUsuarioChange -> {
                 _uiState.update { state ->
                     state.copy(
@@ -40,9 +37,9 @@ class LoginViewModel(
                 }
             }
 
-            LoginUIEvent.ONNavegacaoRealizada -> {
-                _uiState.update {
-                    it.copy()
+            LoginUIEvent.OnNavegacaoRealizada -> {
+                _uiState.update { state ->
+                    state.copy(usuarioLogado = null)
                 }
             }
 
@@ -92,8 +89,7 @@ class LoginViewModel(
                     _uiState.update {
                         it.copy(
                             isLoading = false,
-                            erroMensage = throwable.message
-                                ?: "Erro ao fazer Login"
+                            erroMensage = throwable.message ?: "Erro ao fazer Login"
                         )
                     }
                 }

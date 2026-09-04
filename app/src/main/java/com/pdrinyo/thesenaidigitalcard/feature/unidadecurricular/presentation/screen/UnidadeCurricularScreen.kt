@@ -1,5 +1,6 @@
 package com.pdrinyo.thesenaidigitalcard.feature.unidadecurricular.presentation.screen
 
+import AlunoFaltaCard
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
@@ -33,7 +34,7 @@ import com.pdrinyo.thesenaidigitalcard.feature.login.BackgroundBlue
 import com.pdrinyo.thesenaidigitalcard.feature.login.DarkTextBlue
 import com.pdrinyo.thesenaidigitalcard.feature.login.LightTextBlue
 import com.pdrinyo.thesenaidigitalcard.feature.unidadecurricular.domain.model.Aluno
-import com.pdrinyo.thesenaidigitalcard.feature.unidadecurricular.presentation.component.AlunoFaltaCard
+
 
 @Composable
 fun UnidadeCurricularScreen(

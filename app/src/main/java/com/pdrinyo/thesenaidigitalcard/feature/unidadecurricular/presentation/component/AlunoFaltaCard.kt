@@ -1,4 +1,3 @@
-package com.pdrinyo.thesenaidigitalcard.feature.unidadecurricular.presentation.component
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
